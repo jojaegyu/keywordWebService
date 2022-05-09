@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    회원가입 폼입니다.
+<form action="#" th:action="@{/signup}" method="post" th:object="${User}">
+
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect date</p>
+    Title: <input type="text" title="title" th:field="*{name}"/>
+    <input type="submit" value="생성" />
+</form>
 
 
 </body>
