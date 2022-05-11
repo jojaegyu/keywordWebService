@@ -19,22 +19,16 @@ public class UserController {
 
     @GetMapping("/signup")
     public String getSignup(Model model) {
-        model.addAttribute("User", new User());
+        model.addAttribute("user", new User());
         return signupMain;
     }
 
     @PostMapping("/signup")
     public String postSignup(@Valid User user,
-                             BindingResult bindingResult, Model model) {
-        User u = User.builder()
-                .email("jojaegyu@gmail.com")
-                .password("password")
-                .phone_number("01030766244")
-                .name("jojaegyu")
-                .build();
-        model.addAttribute("User", user);
-        System.out.println("a9ow8ir");
+                             BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult);
             return signupMain;
         }
         return "qqq";

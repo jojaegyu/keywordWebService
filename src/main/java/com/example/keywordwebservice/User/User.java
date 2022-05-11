@@ -1,8 +1,6 @@
 package com.example.keywordwebservice.User;
 
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.context.annotation.Primary;
 
 import javax.persistence.Entity;
@@ -15,6 +13,8 @@ import javax.validation.constraints.Size;
 
 @Entity
 @NoArgsConstructor
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -43,46 +43,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.phone_number = phone_number;
-    }
-
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone_number() {
-        return phone_number;
-    }
-
-    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 }

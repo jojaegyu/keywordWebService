@@ -5,11 +5,26 @@
     <title>Title</title>
 </head>
 <body>
-<form action="#" th:action="@{/signup}" method="post" th:object="${User}">
-
-    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect date</p>
-    Title: <input type="text" title="title" th:field="*{name}"/>
-    <input type="submit" value="생성" />
+<form action="#" th:action="@{/signup}" method="post" th:object="${user}">
+    <div>
+        <div>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect date</p>
+            email <input type="text" title="email" th:field="*{email}"/>
+        </div>
+        <div>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect date</p>
+            password <input type="text" title="password" th:field="*{password}"/>
+        </div>
+        <div>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect date</p>
+            name <input type="text" title="name" th:field="*{name}"/>
+        </div>
+        <div>
+            <p th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}">Incorrect date</p>
+            phone_number <input type="text" title="phone_number" th:field="*{phone_number}"/>
+        </div>
+        <input type="submit" value="회원가입" />
+    </div>
 </form>
 
 
