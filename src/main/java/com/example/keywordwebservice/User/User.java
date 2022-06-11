@@ -3,10 +3,7 @@ package com.example.keywordwebservice.User;
 import lombok.*;
 import org.springframework.context.annotation.Primary;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -21,28 +18,32 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @NotBlank
-    @Email
+    @Column(unique = true)
+    @Size(max=20)
     private String email;
 
-    @NotBlank
-    @Size(min = 8, max = 20)
+    @Size(max=20)
     private String password;
 
-    @NotBlank
-    @Size(min = 2, max = 10)
+    @Size(max=11)
     private String name;
 
-    @NotBlank
-    @Size(min = 11, max = 11)
+    @Size(max=11)
     private String phone_number;
 
+    private int age;
+
+    @Column(columnDefinition = "TINYINT")
+    private int gender;
+
     @Builder
-    public User(Long id, String email, String password, String name, String phone_number) {
-        this.Id = id;
+    public User(Long id, String email, String password, String name, String phone_number, int age, int gender) {
+        Id = id;
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone_number = phone_number;
+        this.age = age;
+        this.gender = gender;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.keywordwebservice.User;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -34,13 +35,31 @@ public class SignUpRequestDto {
     @Size(min = 11, max = 11)
     private String phone_number;
 
-    @NotBlank
     @Max(150)
     private int age;
 
-    @NotBlank // 여 0 남 1
+    // 여 0 남 1
+    @Max(1)
     private int gender;
 
+    public User toEntity(){
+        return User.builder()
+                .email(email)
+                .password(password)
+                .name(name)
+                .phone_number(phone_number)
+                .build();
+    }
 
 
+    @Builder
+    public SignUpRequestDto(String email, String password, String confirm_password, String name, String phone_number, int age, int gender) {
+        this.email = email;
+        this.password = password;
+        this.confirm_password = confirm_password;
+        this.name = name;
+        this.phone_number = phone_number;
+        this.age = age;
+        this.gender = gender;
+    }
 }

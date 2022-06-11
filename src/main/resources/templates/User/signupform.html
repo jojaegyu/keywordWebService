@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="#" th:action="@{/signup}" method="post" th:object="${user}">
+<form action="#" th:action="@{/signup}" method="post" th:object="${SignUpRequestDto}">
     <div>
         <div>
             <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect date</p>
@@ -13,7 +13,11 @@
         </div>
         <div>
             <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect date</p>
-            password <input type="text" title="password" th:field="*{password}"/>
+            password <input type="password" title="password" th:field="*{password}"/>
+        </div>
+        <div>
+            <p th:if="${#fields.hasErrors('confirm_password')}" th:errors="*{confirm_password}">Incorrect date</p>
+            confirm password <input type="password" title="confirm_password" th:field="*{confirm_password}"/>
         </div>
         <div>
             <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect date</p>
@@ -23,6 +27,21 @@
             <p th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}">Incorrect date</p>
             phone_number <input type="text" title="phone_number" th:field="*{phone_number}"/>
         </div>
+
+        <div>
+            <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Incorrect date</p>
+            age <input type="number" min="1" max="150" title="age" th:field="*{age}"/>
+        </div>
+
+        <div>
+            <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Incorrect date</p>
+            gender
+            <input type="radio" title="gender" th:field="*{gender}" value="0"/>
+            <input type="radio" title="gender" th:field="*{gender}" value="1"/>
+        </div>
+
+
+
         <input type="submit" value="회원가입" />
     </div>
 </form>
