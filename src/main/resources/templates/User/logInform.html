@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="#" th:action="@{/login}" method="post" th:object="${LogInRequestDto}">
+        <div>
+            <div>
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect date</p>
+                email <input type="text" title="email" th:field="*{email}"/>
+            </div>
+            <div>
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect date</p>
+                password <input type="password" title="password" th:field="*{password}"/>
+            </div>
+            <input type="submit" value="로그인" />
+        </div>
+    </form>
+</body>
+</html>
