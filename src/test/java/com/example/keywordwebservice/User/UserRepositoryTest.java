@@ -19,7 +19,6 @@ public class UserRepositoryTest {
 
     @Test
     public void userSaveTest(){
-        long l = 0;
         User user = User.builder()
                 .email("jojaegyu@gmail.com")
                 .password("password")

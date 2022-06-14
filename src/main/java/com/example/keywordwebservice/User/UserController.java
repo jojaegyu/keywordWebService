@@ -10,15 +10,15 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @Controller
 public class UserController {
     private static final String signupMain = "/User/signupform";
-    private static final String logInMain = "/User/logInform";
+    private static final String loginMain = "/User/loginform";
     private final UserService userService;
 
     @GetMapping("/signup")
@@ -28,13 +28,11 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String postSignup(@Valid SignUpRequestDto signUpRequestDto,
+    public String postSignup(@Valid @ModelAttribute(name = "SignUpRequestDto") SignUpRequestDto signUpRequestDto,
                              BindingResult bindingResult) {
 
-        if (!signUpRequestDto.getPassword().equals(signUpRequestDto.getConfirm_password())){
-            bindingResult.rejectValue("confirm_password",
-                    "비밀번호가 다릅니다.", "비밀번호가 다릅니다.");
-        }
+        userService.signup(signUpRequestDto, bindingResult);
+
         if (bindingResult.hasErrors()) {
             return signupMain;
         }
@@ -44,15 +42,20 @@ public class UserController {
 
     @GetMapping("/login")
     public String getLogin(Model model){
-        model.addAttribute("LogInRequestDto", new LogInRequestDto());
-        return logInMain;
+        model.addAttribute("LoginRequestDto", new LoginRequestDto());
+        return loginMain;
     }
 
     @PostMapping("/login")
-    public String checkLogin(@Valid LogInRequestDto logInRequestDto,
-                             BindingResult bindingResult){
+    public String checkLogin(@Valid @ModelAttribute(name = "LoginRequestDto") LoginRequestDto loginRequestDto,
+                             BindingResult bindingResult, HttpSession httpSession){
 
+        userService.login(loginRequestDto, bindingResult);
 
+        if(bindingResult.hasErrors()){
+            return loginMain;
+        }
 
+        return "redirect:/";
     }
 }

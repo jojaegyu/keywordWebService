@@ -19,7 +19,6 @@ public class User {
     private Long Id;
 
     @Column(unique = true)
-    @Size(max=20)
     private String email;
 
     @Size(max=20)

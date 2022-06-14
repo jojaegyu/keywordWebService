@@ -1,22 +1,26 @@
 package com.example.keywordwebservice.User;
 
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-@NoArgsConstructor
-public class LogInRequestDto {
+@RequiredArgsConstructor
+@Getter
+@Setter
+public class LoginRequestDto {
     @NotBlank
+    @Email
     private String email;
 
     @NotBlank
     private String password;
 
     @Builder
-    public LogInRequestDto(String email, String password) {
+    public LoginRequestDto(String email, String password) {
         this.email = email;
         this.password = password;
     }
+
 }

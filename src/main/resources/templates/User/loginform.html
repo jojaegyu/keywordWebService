@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="#" th:action="@{/login}" method="post" th:object="${LogInRequestDto}">
+    <form action="#" th:action="@{/login}" method="post" th:object="${LoginRequestDto}">
         <div>
             <div>
                 <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect date</p>

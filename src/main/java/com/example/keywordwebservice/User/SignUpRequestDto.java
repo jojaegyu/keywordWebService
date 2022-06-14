@@ -48,6 +48,8 @@ public class SignUpRequestDto {
                 .password(password)
                 .name(name)
                 .phone_number(phone_number)
+                .age(age)
+                .gender(gender)
                 .build();
     }
 
