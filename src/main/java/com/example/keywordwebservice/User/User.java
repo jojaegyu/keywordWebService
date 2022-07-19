@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(indexes = @Index(name = "i_User", columnList = "email"))
 public class User {
 
     @Id
