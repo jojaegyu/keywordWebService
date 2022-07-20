@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,8 +23,9 @@ public class KeywordAnalysisController {
     @GetMapping("/Analysis")
     @ResponseBody
     public Analysis Analysis(Model model){
-
-        return new Analysis(List.of(1,2,3));
+        System.out.println("awoeirjowaeirj");
+//        Analysis analysis = new Analysis(List.of(1,2,3), List.of)
+        return analysis;
     }
 
 

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -13,5 +14,8 @@ import java.util.List;
 public class Analysis {
 
     private List<Integer> trend;
+
+    private List<Date> dates;
+
 
 }
