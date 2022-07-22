@@ -31,6 +31,7 @@ public class Analysis {
         this.trend = trend;
         this.trend_DateTime = trend_DateTime;
     }
+
     public AnalysisDto toDto(){
         return AnalysisDto.builder()
                 .trend(trend)

@@ -1,13 +1,11 @@
-var data;
 $.ajax({
     url: "/Analysis",
     data: {},
     method: "GET",
     dataType: "json"
 }).done(function(json) {
-    var data = json.trend;
-    var label = json.trend_Datetime;
-
+    var trend = json.trend;
+    var trend_Datetime = json.trend_Datetime;
 
     window.chartColors = {
         red: 'rgb(255, 99, 132)',
@@ -19,31 +17,16 @@ $.ajax({
         grey: 'rgb(231,233,237)'
     };
 
-    var randomScalingFactor = function () {
-        return (Math.random() > 0.5 ? 1.0 : 1.0) * Math.round(Math.random() * 100);
-    };
-
-    var line1 = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),];
-
-    var line2 = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),];
-
-    var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var config = {
+    var trend_config = {
         type: 'line',
         data: {
-            labels: label,
+            labels: trend_Datetime,
             datasets: [{
                 label: "My First dataset",
                 backgroundColor: window.chartColors.red,
                 borderColor: window.chartColors.red,
-                data: data,
+                data: trend,
                 fill: false,
-            }, {
-                label: "My Second dataset",
-                fill: false,
-                backgroundColor: window.chartColors.blue,
-                borderColor: window.chartColors.blue,
-                data: line2,
             }]
         },
         options: {
@@ -78,6 +61,43 @@ $.ajax({
         }
     };
 
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var myLine = new Chart(ctx, config);
+    var trend_ctx = document.getElementById("trends").getContext("2d");
+    var myLine = new Chart(trend_ctx, trend_config);
+
+    var emotions = json.emotions
+    let emotion_data = {
+        labels: ['foo', 'bar', 'baz', 'fie', 'foe', 'fee', 'qqq'],
+        datasets: [{
+            data: [15,22, 35, 22, 66, 22, 11],
+            backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)']
+        }]
+    };
+
+    let emotion_ctx = document.getElementById('emotions').getContext('2d');
+    let emotion_config = {
+        type : 'pie',
+        data : emotion_data,
+        options : {
+            responsive: false,
+            pieceLabel: {
+                mode : 'label',
+                position: "outside",
+                fontSize: 5,
+                fontStyle: 'bold'
+            }
+        },
+
+        plugins : {
+            pieceLabel: {
+                mode : 'label',
+                position: "outside",
+                fontSize: 5,
+                fontStyle: 'bold'
+            }
+        }
+    }
+    let emotion_chart = new Chart(emotion_ctx, emotion_config);
+
+
+
 });

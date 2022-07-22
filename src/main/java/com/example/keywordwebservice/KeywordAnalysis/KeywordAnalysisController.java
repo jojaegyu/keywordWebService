@@ -29,6 +29,7 @@ public class KeywordAnalysisController {
         AnalysisDto analysisDto = AnalysisDto.builder().
                 trend(List.of(1,2,3,4,5,6,7)).
                 trend_Datetime(List.of("1", "2", "3", "4", "5", "6", "7"))
+                .emotions(List.of(0.2f, 0.2f, 0.2f, 0.1f, 0.1f, 0.1f, 0.1f))
                 .build();
         return analysisDto;
     }
