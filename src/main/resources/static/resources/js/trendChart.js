@@ -68,7 +68,7 @@ $.ajax({
     let emotion_data = {
         labels: ['foo', 'bar', 'baz', 'fie', 'foe', 'fee', 'qqq'],
         datasets: [{
-            data: [15,22, 35, 22, 66, 22, 11],
+            data: emotions,
             backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)']
         }]
     };

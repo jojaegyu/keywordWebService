@@ -1,26 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/resources/css/main.css}">
 <head>
+    <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
     <script src="https://kit.fontawesome.com/492c0b02cd.js" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
+
     <title>Title</title>
 </head>
 <body>
+    <div th:replace="~{/fragments/background :: footerFragmentParam ('everyone', 'kim')}"></div>
     <div style="width: 900px; height: 900px;">
         <canvas id="trends"></canvas>
     </div>
     <div style="width: 900px; height: 900px;">
         <canvas id="emotions" width="500px" height="500px"></canvas>
     </div>
-
     <script type="text/javascript" src="resources/js/trendChart.js">
 
     </script>
 </body>
-
-
-
 </html>

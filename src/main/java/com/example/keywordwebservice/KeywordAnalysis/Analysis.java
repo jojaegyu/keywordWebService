@@ -2,14 +2,8 @@ package com.example.keywordwebservice.KeywordAnalysis;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Index;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -32,8 +26,8 @@ public class Analysis {
         this.trend_DateTime = trend_DateTime;
     }
 
-    public AnalysisDto toDto(){
-        return AnalysisDto.builder()
+    public AnalysisResponseDto toDto(){
+        return AnalysisResponseDto.builder()
                 .trend(trend)
                 .trend_Datetime(trend_DateTime)
                 .build();

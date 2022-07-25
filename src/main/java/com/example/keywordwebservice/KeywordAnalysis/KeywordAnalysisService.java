@@ -1,11 +1,8 @@
 package com.example.keywordwebservice.KeywordAnalysis;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,7 +15,7 @@ public class KeywordAnalysisService {
         mongoRepository.insert(analysis);
     }
 
-    public AnalysisDto selectAnalysis(String keyword){
+    public AnalysisResponseDto selectAnalysis(String keyword){
         Optional<Analysis> analysis= mongoRepository.findAnalysisByKeyword(keyword);
         if (analysis.isPresent()){
             return analysis.get().toDto();

@@ -8,5 +8,16 @@
 </head>
 <body>
     <div th:replace="~{/fragments/background :: footerFragmentParam ('everyone', 'kim')}"></div>
+    <div class="main_div">
+    </div>
+    <form action="#" th:action="@{/keywordAnalysis}" method="get" th:object="${AnalysisRequestDto}">
+        <div>
+            <div>
+                <p th:if="${#fields.hasErrors('keyword')}" th:errors="*{keyword}">Incorrect date</p>
+                keywordAnalysis <input type="text" title="keyword" th:field="*{keyword}"/>
+            </div>
+            <input type="submit" value="search" />
+        </div>
+    </form>
 </body>
 </html>
