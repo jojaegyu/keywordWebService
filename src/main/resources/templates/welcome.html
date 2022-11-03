@@ -8,16 +8,19 @@
 </head>
 <body>
     <div th:replace="~{/fragments/background :: footerFragmentParam ('everyone', 'kim')}"></div>
-    <div class="main_div">
+    <div style="height: 100px; width: 100%">
+
     </div>
-    <form action="#" th:action="@{/keywordAnalysis}" method="get" th:object="${AnalysisRequestDto}">
-        <div>
-            <div>
-                <p th:if="${#fields.hasErrors('keyword')}" th:errors="*{keyword}">Incorrect date</p>
-                keywordAnalysis <input type="text" title="keyword" th:field="*{keyword}"/>
+    <div class="main_div">
+        <div style="height: 200px; width:100%"></div>
+        <center>
+            <div class="keyword_bar_div">
+                    <form th:action = '@{/analysis}' method="get" th:object="${KeywordRequestDto}">
+                        <input type="text" class="keyword_bar_input" placeholder="키워드를 입력하세요" th:field="*{keyword}">
+                        <button class="keyword_bar_button"><i style="padding-right: 10px" class="fa-solid fa-magnifying-glass-chart fa-2xl"></i></button>
+                    </form>
             </div>
-            <input type="submit" value="search" />
-        </div>
-    </form>
+        </center>
+    </div>
 </body>
 </html>

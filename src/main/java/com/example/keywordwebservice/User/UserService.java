@@ -5,6 +5,7 @@ import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.Optional;

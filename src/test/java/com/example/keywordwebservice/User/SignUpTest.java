@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @SpringBootTest
-@Rollback(false)
+@Rollback(value = false)
 public class SignUpTest {
     @Autowired
     private MockMvc mockMvc;
@@ -30,7 +30,7 @@ public class SignUpTest {
     @Test
     public void signUp() throws Exception {
         mockMvc.perform(post("/signup").
-                        param("email", "jojaegyu6244@gmail.com")
+                        param("email", "jojaegyu36232@gmail.com")
                         .param("name", "jojaegyu")
                         .param("password", "q1w2e3r4")
                         .param("confirm_password", "q1w2e3r4")

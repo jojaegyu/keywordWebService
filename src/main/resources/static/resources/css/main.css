@@ -1,7 +1,5 @@
 body{
-    margin: 0px;
-    padding: 0px;
-    border: 0px;
+
 }
 
 header {
@@ -41,4 +39,34 @@ header {
 .menu_bar li a:hover{
     color:red;
     background-color: #4d4d4d;
+}
+
+.menu_bar_size{
+    height: 75px;
+    width: 100%;
+}
+
+.keyword_bar_div{
+    height: 50px;
+    width: 50%;
+    background-color: white;
+}
+
+.keyword_bar_input{
+    height: 45px;
+    width: 85%;
+    align-content: center;
+    margin:0;
+    padding:0;
+    border: none;
+    outline: none;
+}
+
+.keyword_bar_button{
+    height: 45px;
+    width: 10%;
+    background-color: white;
+    margin:0;
+    padding:0;
+    border: none;
 }

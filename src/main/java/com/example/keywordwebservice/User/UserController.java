@@ -31,8 +31,11 @@ public class UserController {
     public String postSignup(@Valid @ModelAttribute(name = "SignUpRequestDto") SignUpRequestDto signUpRequestDto,
                              BindingResult bindingResult) {
 
-        userService.signup(signUpRequestDto, bindingResult);
-
+        try {
+            userService.signup(signUpRequestDto, bindingResult);
+        } catch (Exception e){
+            System.out.println("signupError");
+        }
         if (bindingResult.hasErrors()) {
             return signupMain;
         }
@@ -47,7 +50,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String checkLogin(@Valid @ModelAttribute(name = "LoginRequestDto") LoginRequestDto loginRequestDto,
+    public String postLogin(@Valid @ModelAttribute(name = "LoginRequestDto") LoginRequestDto loginRequestDto,
                              BindingResult bindingResult, HttpSession httpSession){
 
         userService.login(loginRequestDto, bindingResult);
@@ -56,6 +59,15 @@ public class UserController {
             return loginMain;
         }
 
+        httpSession.setAttribute("LoginId", loginRequestDto.getEmail());
+
         return "redirect:/";
     }
+
+    @GetMapping("/logout")
+    public String getLogout(HttpSession httpSession){
+        httpSession.removeAttribute("LoginId");
+        return "redirect:/";
+    }
+
 }

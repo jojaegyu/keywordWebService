@@ -1,6 +1,6 @@
 package com.example.keywordwebservice.system;
 
-import com.example.keywordwebservice.KeywordAnalysis.AnalysisRequestDto;
+import com.example.keywordwebservice.Keyword.KeywordRequestDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +10,7 @@ public class WelcomeController {
 
     @GetMapping("/")
     public String welcome(Model model){
-
-        AnalysisRequestDto analysisRequestDto = new AnalysisRequestDto();
-        model.addAttribute("AnalysisRequestDto", analysisRequestDto);
+        model.addAttribute("KeywordRequestDto", new KeywordRequestDto());
         return "welcome";
     }
 

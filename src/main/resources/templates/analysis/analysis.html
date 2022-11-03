@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" th:href="@{/resources/css/main.css}">
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+    <script src="https://kit.fontawesome.com/492c0b02cd.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="keyword_bar_div">
+        <form th:action = '@{/analysis}' method="get" th:object="${KeywordRequestDto}">
+            <input type="text" class="keyword_bar_input" th:placeholder="${keyword}" th:field="*{keyword}">
+            <button class="keyword_bar_button"><i style="padding-right: 10px" class="fa-solid fa-magnifying-glass-chart fa-2xl"></i></button>
+        </form>
+    </div>
+    <div style="width: 900px; height: 900px;">
+        <select id="gender" onchange="ChangeValue()">
+            <option value="-1">성별</option>
+            <option value="f">여자</option>
+            <option value="m">남자</option>
+        </select>
+        <select id="ageCategory" onchange="ChangeValue()">
+            <option value="-1">연령</option>
+            <option value="0">아동</option>
+            <option value="1">청소년</option>
+            <option value="2">20대</option>
+            <option value="3">30대</option>
+            <option value="4">40대</option>
+            <option value="5">50대</option>
+            <option value="6">60세이상</option>
+        </select>
+        <select id="period" onchange="ChangeValue()">
+            <option value="month">월간</option>
+            <option value="date">일간</option>
+            <option value="week">주간</option>
+        </select>
+        <canvas id="trends"></canvas>
+    </div>
+    <div style="width: 900px; height: 900px;">
+        <canvas id="emotions" width="500px" height="500px"></canvas>
+    </div>
+
+
+    <div id="keyword_text" style="display:none" th:text="${keyword}"></div>
+    <script type="text/javascript" src="resources/js/trendChart.js">
+
+    </script>
+</body>
