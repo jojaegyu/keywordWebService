@@ -35,7 +35,7 @@ function ChangeValue(){
             data: {
                 labels: trend_Datetime,
                 datasets: [{
-                    label: "My First dataset",
+                    label: "키워드 검색량",
                     backgroundColor: window.chartColors.red,
                     borderColor: window.chartColors.red,
                     data: trend,
@@ -81,9 +81,24 @@ function ChangeValue(){
         }
         trendChart = new Chart(trend_ctx, trend_config);
 
+        // var emotions = json.emotions
+
+    });
+}
+
+function initEmotion(){
+    var keyword_dom = document.getElementById("keyword_text");
+    var keyword = keyword_dom.innerText;
+    var data = {keyword: keyword}
+    $.ajax({
+        url: "/getEmotions",
+        data: data,
+        method: "GET",
+        dataType: "json"
+    }).done(function(json) {
         var emotions = json.emotions
         let emotion_data = {
-            labels: ['foo', 'bar', 'baz', 'fie', 'foe', 'fee', 'qqq'],
+            labels: ['angry', 'sad', 'fear', 'disgust', 'neutral', 'happiness', 'surprise'],
             datasets: [{
                 data: emotions,
                 backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)']
@@ -114,8 +129,10 @@ function ChangeValue(){
             }
         }
         let emotion_chart = new Chart(emotion_ctx, emotion_config);
-    });
+    })
+
 }
 
 var trendChart = null;
 ChangeValue();
+initEmotion();
